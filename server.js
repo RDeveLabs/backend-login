@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
 const app = express();
-test
+
 app.use(cors({
     origin: 'https://test.rdevelabs.com',
     methods: ['POST', 'GET'],
