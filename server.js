@@ -33,18 +33,16 @@ app.post('/daftar', upload.none(), async(req, res) => {
     }
 })
 
-app.get('/login', async (req, res) => {
-    // const userName = req.body.username;
-    // const pass = req.body.password;
+app.post('/login', upload.none(), async (req, res) => {
+    const userName = req.body.username;
+    const pass = req.body.password;
     try {
         const login = await prisma.user.findMany({
-            where: { username: "raihan", AND: { password: "1234"} },
+            where: { username: userName, AND: { password: pass } },
         });
-        res.json({
-            data: login
-        })
+        res.text("Data berhasil ditemukan")
     } catch (e) {
-        res.text("ada kesalahan")
+        res.text("Data tidak ada")
     }
 })
 
