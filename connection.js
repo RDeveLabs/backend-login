@@ -1,7 +1,9 @@
-import "dotenv/config";
-import { PrismaMariaDb } from "@prisma/adapter-mariadb";
-import { PrismaClient } from "../generated/prisma/client";
+// 1. Import menggunakan require
+require("dotenv/config");
+const { PrismaMariaDb } = require("@prisma/adapter-mariadb");
+const { PrismaClient } = require("../generated/prisma/client");
 
+// 2. Inisialisasi adapter dengan variabel lingkungan
 const adapter = new PrismaMariaDb({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -9,6 +11,9 @@ const adapter = new PrismaMariaDb({
   database: process.env.DATABASE,
   connectionLimit: 5,
 });
+
+// 3. Inisialisasi Prisma Client dengan adapter
 const prisma = new PrismaClient({ adapter });
 
-export { prisma };
+// 4. Export menggunakan module.exports
+module.exports = { prisma };

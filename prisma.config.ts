@@ -8,7 +8,7 @@ const myEnv = dotenv.config();
 expand(myEnv);
 
 // 3. Konfigurasi Prisma berjalan seperti biasa
-export default defineConfig({
+module.exports = defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
     path: "prisma/migrations",
