@@ -38,7 +38,7 @@ app.get('/login', async (req, res) => {
     // const pass = req.body.password;
     try {
         const login = await prisma.user.findMany({
-            where: { username: "raihan" }
+            where: { username: "raihan", AND: { password: "1234"} },
         });
         res.json({
             data: login
