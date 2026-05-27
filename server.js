@@ -40,9 +40,9 @@ app.post('/login', upload.none(), async (req, res) => {
         const login = await prisma.user.findMany({
             where: { username: userName, AND: { password: pass } },
         });
-        res.text("Data berhasil ditemukan")
+        res.send("Data berhasil ditemukan")
     } catch (e) {
-        res.text("Data tidak ada")
+        res.send("Data tidak ada")
     }
 })
 
