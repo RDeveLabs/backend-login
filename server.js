@@ -16,11 +16,11 @@ app.get('/', (req, res) => {
     res.send("Haloo");
 })
 
-app.post('/data', upload.none(), async(req, res) => {
+app.post('/daftar', upload.none(), async(req, res) => {
     const userName = req.body.username;
     const pass = req.body.password;
     try{
-        const user = await prisma.user.create({
+        const daftar = await prisma.user.create({
             data: {
                 username: userName,
                 password: pass
@@ -30,6 +30,19 @@ app.post('/data', upload.none(), async(req, res) => {
         res.send("berhasil menuliskan ke database");
     }catch(e){
         res.send("ada error saat menulis ke database: " + e)
+    }
+})
+
+app.get('/login', async (req, res) => {
+    // const userName = req.body.username;
+    // const pass = req.body.password;
+    try {
+        const login = await prisma.user.findMany();
+        res.json({
+            data: login
+        })
+    } catch (e) {
+        res.text("ada kesalahan")
     }
 })
 
