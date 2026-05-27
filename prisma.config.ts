@@ -1,14 +1,14 @@
 // 1. Install & import dotenv dan dotenv-expand secara terpisah
-const dotenv = require('dotenv');
-const { expand } = require('dotenv-expand');
-const { defineConfig, env } = require('prisma/config');
+import dotenv from "dotenv";
+import { expand } from "dotenv-expand";
+import { defineConfig, env } from "prisma/config";
 
 // 2. Load file .env kemudian lakukan ekspansi variabel
 const myEnv = dotenv.config();
 expand(myEnv);
 
 // 3. Konfigurasi Prisma berjalan seperti biasa
-module.exports = defineConfig({
+export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
     path: "prisma/migrations",

@@ -1,9 +1,7 @@
-const express = require('express');
-const cors = require('cors');
-const multer = require('multer');
-const { prisma } = require('./connection');
-const { error } = require('node:console');
-const { use } = require('react');
+import express from "express";
+import cors from "cors";
+import multer from "multer";
+import { prisma } from "./connection";
 const app = express();
 
 app.use(cors({
@@ -28,13 +26,11 @@ app.post('/data', upload.none(), async(req, res) => {
                 password: pass
             }
         })
-        
-        res.send("berhasil menuliskan ke database" + user);
+
+        res.send("berhasil menuliskan ke database");
     }catch(e){
         res.send("ada error saat menulis ke database: " + e)
     }
-
-    res.send("data diterima :" + userName + pass);
 })
 
 app.listen(3000, () => {
