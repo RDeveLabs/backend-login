@@ -5,4 +5,4 @@ COPY . .
 RUN npm install && npm install express multer cors dotenv
 
 EXPOSE 3000
-CMD [ "node", "server.js" ]
+CMD [ "sh", "-c", "npx prisma migrate deploy && npx prisma generate && npx tsx server.js" ]
