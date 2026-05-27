@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import multer from "multer";
 import { prisma } from "./connection.js";
+import { json } from "node:stream/consumers";
 const app = express();
 
 app.use(cors({
@@ -37,12 +38,13 @@ app.post('/login', upload.none(), async (req, res) => {
     const userName = req.body.username;
     const pass = req.body.password;
     try {
-        const login = await prisma.user.findMany({
-            where: { username: userName, AND: { password: pass } },
+        const login = await prisma.user.findFirst({
+            where: { username: userName, password: pass },
         });
+        if(!login) res.send("Data tidak ada")
         res.send("Data berhasil ditemukan")
     } catch (e) {
-        res.send("Data tidak ada")
+        res.send("Ada kesalahan: " + e)
     }
 })
 
