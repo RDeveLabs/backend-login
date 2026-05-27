@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import multer from "multer";
-import { prisma } from "./connection";
+import { prisma } from "./connection.js";
 const app = express();
 
 app.use(cors({
