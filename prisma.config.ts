@@ -1,7 +1,7 @@
 // 1. Install & import dotenv dan dotenv-expand secara terpisah
-import dotenv from "dotenv";
-import { expand } from "dotenv-expand";
-import { defineConfig, env } from "prisma/config";
+const dotenv = require('dotenv');
+const { expand } = require('dotenv-expand');
+const { defineConfig, env } = require('prisma/config');
 
 // 2. Load file .env kemudian lakukan ekspansi variabel
 const myEnv = dotenv.config();
